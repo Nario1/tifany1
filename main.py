@@ -1,14 +1,24 @@
-''' Determina el mayor de tres numeros ingresando por el teclado '''
-numeros = []
-for i in range(1, 4):
-    numero = int(input(f"Ingrese el número {i}: "))
-    numeros.append(numero)
+''' Determina el mayor de tres números ingresados por teclado con validación '''
 
-if numeros[0] >= numeros[1] and numeros[0] >= numeros[2]:
-    mayor = numeros[0]
-elif numeros[1] >= numeros[0] and numeros[1] >= numeros[2]:
-    mayor = numeros[1]
+def pedir_numero(indice):
+    while True:
+        try:
+            return int(input(f"Ingrese el número {indice}: "))
+        except ValueError:
+            print("❌ Entrada inválida. Por favor, ingrese un número entero.")
+
+# Pedimos y validamos los tres números
+num1 = pedir_numero(1)
+num2 = pedir_numero(2)
+num3 = pedir_numero(3)
+
+# Determinar el mayor
+if num1 >= num2 and num1 >= num3:
+    mayor = num1
+elif num2 >= num1 and num2 >= num3:
+    mayor = num2
 else:
-    mayor = numeros[2]
+    mayor = num3
 
-print(f"El número mayor entre {numeros[0]}, {numeros[1]} y {numeros[2]} es: {mayor}")
+# Mostrar resultado
+print(f"✅ El número mayor entre {num1}, {num2} y {num3} es: {mayor}")
